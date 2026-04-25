@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eva Vibe — Engine Catalyst</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Engine Catalyst</h1>
+        <p>Image + Audio → Monetizable MP4 → YouTube Radio</p>
+      </header>
+
+      <main>
+        <!-- ── Inputs ── -->
+        <section class="drop-zones">
+          <div class="drop-zone" id="drop-image">
+            <span>Drop Cover Image (JPG / PNG)</span>
+            <input type="file" id="input-image" accept="image/*" hidden />
+          </div>
+          <div class="drop-zone" id="drop-audio">
+            <span>Drop Audio Tracks (select multiple)</span>
+            <input type="file" id="input-audio" accept="audio/*" multiple hidden />
+          </div>
+        </section>
+
+        <!-- ── Saved session banner (shown on page load if session exists) ── -->
+        <div id="session-banner" style="display:none;">
+          <span id="session-label"></span>
+          <button id="btn-reload-session">↩ Use Last Session</button>
+        </div>
+
+        <!-- ── SEO ── -->
+        <section class="seo-section" id="seo-section" style="display:none;">
+          <h2>Viral SEO Package</h2>
+          <div class="seo-card">
+            <p><strong>Title:</strong> <span id="seo-title"></span></p>
+            <p><strong>Tags:</strong> <span id="seo-tags"></span></p>
+            <textarea id="seo-desc" rows="5" readonly></textarea>
+          </div>
+        </section>
+
+        <!-- ── Main controls ── -->
+        <section class="controls">
+
+          <!-- Status + progress -->
+          <p id="deploy-status" class="status-line"></p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="live-progress"></div>
+          </div>
+
+          <!-- Three action buttons -->
+          <div class="action-btns">
+            <button id="btn-sample"     disabled class="btn-sample">🎬 Generate Sample</button>
+            <button id="btn-start"      disabled class="btn-start" >📡 Start Radio</button>
+            <button id="btn-stop"                class="btn-stop"  >⏹ Stop Radio</button>
+          </div>
+
+          <!-- Stream key (shown when needed) -->
+          <div id="stream-key-row" style="display:none; margin-top:1rem;">
+            <input type="password" id="input-stream-key"
+                   autocomplete="off" spellcheck="false"
+                   placeholder="YouTube Stream Key (leave blank if set in .env)" />
+          </div>
+
+        </section>
+
+        <!-- ── Sample preview panel ── -->
+        <section id="sample-panel" style="display:none;">
+          <h3 class="panel-label">Sample Preview</h3>
+          <video id="sample-video" controls></video>
+        </section>
+
+        <!-- ── Confirm-before-full-render modal ── -->
+        <dialog id="preview-modal">
+          <div class="modal-content">
+            <h4>10-Second Preview — approve before full render</h4>
+            <video id="preview-video" controls autoplay></video>
+            <div class="preview-btns">
+              <button id="btn-preview-reject"  class="btn-secondary">← Back</button>
+              <button id="btn-preview-confirm" class="btn-confirm"   >✅ Looks Good — Start Radio</button>
+            </div>
+          </div>
+        </dialog>
+
+        <!-- ── Log terminal ── -->
+        <section class="log-section">
+          <h3>Engine Logs</h3>
+          <div id="log-terminal"></div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
